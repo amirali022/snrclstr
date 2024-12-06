@@ -103,15 +103,15 @@ def clustering( image_path: str,
 		mask_polygon: Polygon defining the region of interest.
 		blur_kernel_size: Kernel size for Gaussian blurring.
 		blur_sigmaX: Standard deviation in x direction for Gaussian blurring.
-        blur_sigmaY: Standard deviation in y direction for Gaussian blurring.
+		blur_sigmaY: Standard deviation in y direction for Gaussian blurring.
 		threshold: Threshold for binary image conversion.
 		erosion_disk_radius: Radius of the disk structuring element for erosion.
 		kmeans_n_clusters: Number of clusters for K-Means.
-        kmeans_centeroid_distance_lambda: Regularization parameter for minimum distance constraint.
-        kmeans_min_dist: Minimum distance between centroids.
-        kmeans_tol: Tolerance for early stopping in K-Means.
-        kmeans_max_iter: Maximum iterations for K-Means.
-        kmeans_n_iter: Number of times to run K-Means with different initializations.
+		kmeans_centeroid_distance_lambda: Regularization parameter for minimum distance constraint.
+		kmeans_min_dist: Minimum distance between centroids.
+		kmeans_tol: Tolerance for early stopping in K-Means.
+		kmeans_max_iter: Maximum iterations for K-Means.
+		kmeans_n_iter: Number of times to run K-Means with different initializations.
 
 	Returns:
         Cluster centers as a NumPy array, or None if no bright pixels are found.
