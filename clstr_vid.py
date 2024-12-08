@@ -106,5 +106,8 @@ if __name__ == "__main__":
 					       threshold=threshold,
 						   eps=eps,
 						   min_samples=samples)
-	
-	savemat( "clusters.mat", mdict={ "clusters": clusters})
+
+	if clusters is not None:
+		savemat( "clusters.mat", mdict={ "clusters": clusters})
+	else:
+		print( "None")
