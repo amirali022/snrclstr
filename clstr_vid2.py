@@ -73,7 +73,6 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser( description="script for clustering frame of video")
 
 	parser.add_argument( "-i", "--input", type=str, required=True, help="Path to the Video")
-	parser.add_argument( "-f", "--frame", type=int, required=True, help="Frame Number")
 	parser.add_argument( "-t", "--threshold", type=float, default=0.5, required=False, help="Binary Threshold")
 	parser.add_argument( "-e", "--eps", type=int, default=20, required=False, help="Minimum Distance (in pixels)")
 	parser.add_argument( "-s", "--samples", type=int, default=10, required=False, help="Minimum Number of Samples in each Cluster")
@@ -81,7 +80,6 @@ if __name__ == "__main__":
 	args = vars( parser.parse_args())
 
 	input_video = args[ "input"]
-	frame_n = args[ "frame"]
 	threshold = args[ "threshold"]
 	eps = args[ "eps"]
 	samples = args[ "samples"]
@@ -100,14 +98,19 @@ if __name__ == "__main__":
 
 	frames = np.array( frames)
 
-	image = frames[ frame_n]
+	all_clusters = []
 
-	clusters = clustering( image=image,
-					       threshold=threshold,
-						   eps=eps,
-						   min_samples=samples)
+	for i in range( len( frames)):
+		print( f"Frame { i + 1}/{ len( frames)}")
 
-	if clusters is not None:
-		savemat( "clusters.mat", mdict={ "clusters": clusters})
-	else:
-		print( "None")
+		image = frames[ i]
+
+		clusters = clustering( image=image,
+							   threshold=threshold,
+							   eps=eps,
+							   min_samples=samples)
+
+		if clusters is not None:
+			all_clusters.append( np.c_[ clusters, ( i + 1) * np.ones_like( clusters[ :, 0])])
+
+	savemat( "clusters.mat", mdict={ "clusters": np.concatenate( all_clusters)})
