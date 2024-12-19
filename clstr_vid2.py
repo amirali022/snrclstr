@@ -12,7 +12,7 @@ def clustering( image: NDArray,
 	"""Finds and Returns Cluster Centers in image
 
 	Args:
-		image_path: path to input image.
+		image: input image.
 		threshold: a float scalar ranges from 0.0 to 1.0. determines brightness threshold
 		eps: parameter of DBSCAN algorithm. The maximum distance between two samples for one to be considered as in the neighborhood of the other
 		min_samples: parameter of DBSCAN algorithm. The number of samples in a neighborhood for a point to be considered as a core point
