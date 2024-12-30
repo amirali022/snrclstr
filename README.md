@@ -8,6 +8,7 @@ This project implements clustering algorithm to find the centers of bright regio
 - DBScan
 - KMeans
 - KMeans with a regularization term to enforce minimum distance between cluster centroids
+- KMeans with post-processing that eliminates centeroids which violates minimum distance constraint
 
 ## Preprocessing Steps
 
